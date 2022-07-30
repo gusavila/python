@@ -40,9 +40,28 @@ while op != 0:
         produtos[codigo][2] += qtdItems 
 
     elif op == 3:
-        nomeProduto = input('Digite o nome do produto: ')
+        for codigo, produto in enumerate(produtos):
+            print(f'\nCodigo do produto({codigo})')
+            print(f'Nome(descrição)  - {produto[0]}')
+            print(f'Tipo de produto  - {produto[1]}')
+            print(f'Quantidade atual - {produto[2]}')
+            print(f'Valor unitario   - {produto[4]}')
+            print(f'Valor Total      - {produto[2] * produto[4]}')
+
+        codigoProduto = int(input('\nDigite o codigo do produto: '))
+        qtdItems = int(input('Digite a quantidade de items que será removida do estoque: '))  
+
+        if qtdItems <= produtos[codigo][2]:
+            produtos[codigo][2] -= qtdItems 
+        else:
+            print('Quantidade de item está indisponível para retirada!')
 
     elif op == 4:
-        for item in enumerate(produtos):
-            print(f'{produtos}')
+        for codigo, produto in enumerate(produtos):
+            print(f'\nCodigo do produto({codigo})')
+            print(f'Nome(descrição)  - {produto[0]}')
+            print(f'Tipo de produto  - {produto[1]}')
+            print(f'Quantidade atual - {produto[2]}')
+            print(f'Valor unitario   - {produto[4]}')
+            print(f'Valor Total      - {produto[2] * produto[4]}')
 

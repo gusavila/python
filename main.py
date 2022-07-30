@@ -19,23 +19,25 @@ while op != 0:
     if op == 1:
         nome = input('Nome do produto: ')
         tipo = input('Tipo (M) para matéria-prima ou (P) para produto fabricado: ')
-        qtd = input('Quantidade em estoque: ')
-        qtdMinima = input('Quantidade mínima de estoque: ')
-        preco = input('Valor unitário: ')
+        qtd = int(input('Quantidade em estoque: '))
+        qtdMinima = int(input('Quantidade mínima de estoque: '))
+        preco = float(input('Valor unitário: '))
         novoProduto = [nome, tipo, qtd, qtdMinima, preco]
         produtos.append(novoProduto)
 
     elif op == 2:
-        enderecoProduto = input('Digite o endereço do produto: ')
-        qtdItems = input('Digite a quantidade que entrara no estoque: ')
+        for codigo, produto in enumerate(produtos):
+            print(f'\nCodigo do produto({codigo})')
+            print(f'Nome(descrição)  - {produto[0]}')
+            print(f'Tipo de produto  - {produto[1]}')
+            print(f'Quantidade atual - {produto[2]}')
+            print(f'Valor unitario   - {produto[4]}')
+            print(f'Valor Total      - {produto[2] * produto[4]}')
 
-        for endereco, produto in enumerate(produtos):
-            print(endereco, ' -> ', produto[2])
+        codigoProduto = int(input('\nDigite o codigo do produto: '))
+        qtdItems = int(input('Digite a quantidade de items que entrara no estoque: '))  
 
-            if endereco == enderecoProduto:
-                # Quantidades de produtos em estoque somado a quantidade recebida
-                produto[2] += qtdItems
-            
+        produtos[codigo][2] += qtdItems 
 
     elif op == 3:
         nomeProduto = input('Digite o nome do produto: ')
